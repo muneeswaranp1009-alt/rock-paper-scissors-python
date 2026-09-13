@@ -1,0 +1,50 @@
+import random
+
+def game():
+    
+    choices = ["rock","paper","scissor"]
+    
+    player_Score = 0
+    computer_score = 0
+    tie = 0
+    
+    print("\nWelcome to Rock , Paper , Scissor Game!")
+    print("\nAlways You First to Start the Game!")
+    
+    while True:
+        print("Want to exit? ,Then type 'exit' to exit")
+        user_choice = input("\nEnter Your Choice (Rock or Paper or Scissor):").strip().lower()
+        
+        if user_choice == 'exit':
+            break
+        
+        if user_choice not in choices:
+            print("Invalid Choice , Please Enter the correct Choice!")
+            continue
+        
+        bot_choice = random.choice(choices)
+        print(f"Computer Choice is {bot_choice.capitalize()}")
+        
+        if user_choice == bot_choice:
+            print("\nIt's a Tie!")  
+            tie += 1
+        
+        elif (user_choice == 'scissor' and bot_choice == 'paper') or \
+            (user_choice == 'rock' and bot_choice == 'scissor') or \
+            (user_choice == 'paper' and bot_choice == 'rock'):
+            print("You won the Game!")
+            player_Score += 1
+            
+        else:
+            print("Computer Won the game!")
+            computer_score +=1
+            
+            print("\n")
+            print(f"Score -> You: {player_Score} | Computer: {computer_score} | Ties: {tie}\n")
+
+    print("\n=== Game Over ===")
+    print(f"Final Score -> You: {player_Score} | Computer: {computer_score} | Ties: {tie}")
+    print("Thanks for playing!")
+
+if __name__ == '__main__':
+    game()
